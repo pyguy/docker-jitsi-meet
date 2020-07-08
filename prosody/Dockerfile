@@ -1,6 +1,6 @@
-ARG JITSI_REPO=jitsi
+ARG JITSI_REPO=pyguy/jitsi
 
-FROM ${JITSI_REPO}/base as builder
+FROM ${JITSI_REPO}:base as builder
 
 RUN \
     apt-dpkg-wrap apt-get update \
@@ -17,7 +17,7 @@ RUN \
     && luarocks install luajwtjitsi 1.3-7 \
     && luarocks install net-url 0.9-1
 
-FROM ${JITSI_REPO}/base
+FROM ${JITSI_REPO}:base
 
 ADD https://prosody.im/files/prosody-debian-packages.key /tmp/prosody.key
 
